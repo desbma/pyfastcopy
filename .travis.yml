@@ -1,0 +1,38 @@
+language: python
+python:
+  - "2.7"
+  - "3.0"
+  - "3.1"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+before_install:
+  - "sudo apt-get -q update"
+  - "pip install -U pip"
+install:
+  - "pip install -r requirements.txt"
+  - "pip install coveralls"
+script:
+  - "coverage run --source=pyfastcopy setup.py test"
+after_success:
+  - "coveralls"
+before_deploy:
+  - "sudo add-apt-repository -y ppa:marutter/c2d4u"  # to get newer pandoc
+  - "sudo apt-get -q update"
+  - "sudo apt-get -V install pandoc"
+  - "pip install pypandoc"
+deploy:
+  provider: pypi
+  user: desbma
+  password:
+    secure: "uG7GOXMg5+98u3pir/kcMwKGsVvILTDZjx9LeppY51zw3O7rA7azV+rBi7G3qbFkhD26khUvHCALnwn4Vc9vvU3lFthPVXZrAorDzTjgmhxM3YUybFuxvCo2LA0HpjY0D6iPhwoQpJhoqDRBA0d+OzPhZ6X2q4r5T/HfqUnMm4xin3ee9hEdVCSr5/8+Dy7j1Z+uJ2X222DGuTN57FXsL/tNP/Yp1fQTLk1zksVQbWocJ7+3ewpq9smzt/K2Jx5UiBpDPYRbYN5wcP5p4K+mBw2s15EniwrQprOMhI81tO/4ckvlAxI7Anxv3NSptsCgjpBnod/7EZsXqHJ/QB2Non+PbRWSIM7qvYzS8dVX7NqWdfpjOX5avo3tiWo7TgpyqestsQ+TH9bbInsExIgMA4F6UsAgPhBEC8kqfaDaycKuNRCQhRuBsPjOT/+NJMfdnbQiZE9WPJUIE/NlAb4XfQqxM3UzY4nqCq4c4f2IQQVEJC8FCghkQLbR+8ZVS5wX+nnTIWvXPsPrQShBfawrMhoIuB8fiDUHXty47i1NuKoFEnvdxE8UeKyZpM6WfWMc697cJIHaOtMYBtdaHPhZIrPazJX2I/QVwIsVqnLjFeu8pj2wKVnwd4ynjuQNhdMGOaK7O+vurdkjBRKhDFn1ucfga2h4afiQGdTaN/eq0OQ="
+  on:
+    tags: true
+    branch: master
+notifications:
+  email:
+    recipients:
+      - secure: "mkQD4MoRo/bVmITmxxkPJCebysNIZtP4geFuFvkcjIIVNUJTjvNzptY9bpI4rQE3nU4MGDHg7YOtl3wHRkP94pTKh5fCtaXZjFAInqT4Sw8DC9F5skIq4uqLwRkIlxOsNNjahc0vpJyg0swPs4qeM2HwkPa32efJJdqUUVXZYyv2o7wcoY7NMLf8hD6FlKh0DVLeS4HTrAKxNy+22v0PWpEEw3Dsi9qE+ZHOukOvUqI36kQtsWdeqqwjEffMB8vepzwt/iF5zB/ljoOILtRvCi3Y5O3aSmoZJkYAkplaaoIhyXHvFWAm5ERK9xk4RyN9oqBOdjMjQEVXBdGuxiqMiaT4Vj+u28t6m9XTbowAHOJKCMX+eWw6QpUeAG82pynPhJiOQFSP4RCLUY2qzAIz6G82b2fxIdAEkywE98Z4L5x+qScBcVxzm1KbDPyeXN/BECs+OygQMfX33B4hTn6lLBNgoFK9w+jVhF9gwf5fFAfOeErNiYb92WWlzAEfo157KtGUH8O3QyO04t56hzLA6cXH4O9M21Upb2fpMhzYA0yCSLwnQF0ISLiUW2rCJ4blB+W2CbwUvOytX53FrFMZd+XM4V0UoFP1R/XDGo7ho8VjQIqTWXuj0qrQEh3ZEbhR3xVlS4VdirhSM3i249J52cFZxkATM/djFtuAguw/mmc="
+    on_success: always
+    on_failure: always
