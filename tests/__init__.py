@@ -47,8 +47,12 @@ class TestFastCopy(unittest.TestCase):
     self.assertEqual(shutil.copyfile(self.tmpfile1, self.tmpfile2),
                      self.tmpfile2)
     with open(self.tmpfile1, "rb") as f1, open(self.tmpfile2, "rb") as f2:
-      self.assertEqual(f1.read(io.DEFAULT_BUFFER_SIZE),
-                       f2.read(io.DEFAULT_BUFFER_SIZE))
+      while True:
+        c1 = f1.read(io.DEFAULT_BUFFER_SIZE)
+        c2 = f2.read(io.DEFAULT_BUFFER_SIZE)
+        self.assertEqual(c1, c2)
+        if not c1:
+          break
 
   def test_sendfileCalled(self):
     with mock.patch("pyfastcopy._sendfile", wraps=pyfastcopy._sendfile) as sendfile_mock:
