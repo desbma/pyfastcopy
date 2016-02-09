@@ -9,7 +9,7 @@ pyfastcopy
 
 pyfastcopy is a simple Python module that monkey patches the `shutil.copyfile` function of Python standard library to internally use the sendfile system call.
 
-It can provide massive performance improvements for large file copy (the larger the file, the greater the performance gain). See [here](https://bugs.python.org/issue25156#msg253643) for some numbers.
+It can provide important performance improvements for large file copy (typically 30-40%). See [the performance section](#Performance) for some numbers.
 
 Because `shutil.copyfile` is used by other fonctions in the `shutil` module, the following functions also automatically benefit from the performance boost:
 
@@ -20,6 +20,21 @@ Because `shutil.copyfile` is used by other fonctions in the `shutil` module, the
 If sendfile is not available on your system or fails, the classic, slower chunk file copy is used, so there is no downside to using this module.
 
 For more information, see [my proposed patch](https://bugs.python.org/issue25156) for Python.
+
+
+## Performance
+
+Tests were done copying files (source and destination) on a [tmpfs](https://en.wikipedia.org/wiki/Tmpfs) filesystem, so that no slowdown related to hard drive or SSD storage occurs. Test files were generated with pseudo random data using [frandom](http://www.billauer.co.il/frandom.html).
+
+See [benchmark.py](https://github.com/desbma/pyfastcopy/blob/master/benchmark.py) for details about the test procedure and how the following graphs were generated.
+
+[![Imgur](http://i.imgur.com/0TZTs4Oh.png)](http://i.imgur.com/0TZTs4O.png)
+
+[![Imgur](http://i.imgur.com/op8HxaCh.png)](http://i.imgur.com/op8HxaC.png)
+
+These tests show a 30-40% performance gain compared to stock Python shutil.copy:
+
+[![Imgur](http://i.imgur.com/V4dIgSyh.png)](http://i.imgur.com/V4dIgSy.png)
 
 
 ## Usage
