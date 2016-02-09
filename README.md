@@ -33,7 +33,7 @@ See [benchmark.py](https://github.com/desbma/pyfastcopy/blob/master/benchmark.py
 ![Imgur](http://i.imgur.com/4HdagEo.png)
 
 These tests show a 30-40% performance improvement of `shutil.copyfile` compared to stock Python:
-![Imgur](http://i.imgur.com/4YSiTOV.png)
+![Imgur](http://i.imgur.com/r8Sjlon.png)
 
 
 ## Usage

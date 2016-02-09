@@ -98,7 +98,7 @@ if __name__ == "__main__":
                               stderr=None,
                               universal_newlines=True)
     gnuplot_code = ["set terminal png size 1024,600 font 'M+ 1c bold,12'",
-                    "set title \"shutil.copyfile performance gain of: pyfastcopy vs stock Python\\n"
+                    "set title \"shutil.copyfile performance gain of pyfastcopy vs stock Python\\n"
                     "(using tmpfs, on %s %s %s)\"" % (platform.system(),
                                                       platform.release(),
                                                       platform.processor()),
