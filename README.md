@@ -17,7 +17,7 @@ Because `shutil.copyfile` is used by other fonctions in the `shutil` module, the
 * `shutil.copy2`
 * `shutil.copytree`
 
-If sendfile is not available on your system or fails, the classic, slower chunk file copy is used, so there is no downside to using this module.
+If `sendfile` is not available on your system or fails, the classic, slower chunk file copy is used, so there is no downside to using this module.
 
 For more information, see [my proposed patch](https://bugs.python.org/issue25156) for Python.
 
@@ -55,14 +55,14 @@ And then use the patched shutil.copyfile as usual:
 
 1. If you don't already have it, [install pip](http://www.pip-installer.org/en/latest/installing.html) for Python 3 (not needed if you are using Python >= 3.4)
 2. Install pyfastcopy: `pip3 install pyfastcopy`
-3. Enjoy fast fast copy when using `shutil.copyfile`, `shutil.copy`, `shutil.copy2` or `shutil.copytree`
+3. Enjoy fast copy when using `shutil.copyfile`, `shutil.copy`, `shutil.copy2` or `shutil.copytree`
 
 ### From source
 
 1. If you don't already have it, [install setuptools](https://pypi.python.org/pypi/setuptools#installation-instructions) for Python 3
 2. Clone this repository: `git clone https://github.com/desbma/pyfastcopy`
 3. Install pyfastcopy: `python3 setup.py install`
-4. Enjoy fast fast copy when using `shutil.copyfile`, `shutil.copy`, `shutil.copy2` or `shutil.copytree`
+4. Enjoy fast copy when using `shutil.copyfile`, `shutil.copy`, `shutil.copy2` or `shutil.copytree`
 
 
 ## License
