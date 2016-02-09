@@ -28,12 +28,12 @@ Tests were done copying files (source and destination) on a [tmpfs](https://en.w
 
 See [benchmark.py](https://github.com/desbma/pyfastcopy/blob/master/benchmark.py) for details about the test procedure and how the following graphs were generated.
 
-[![Imgur](http://i.imgur.com/0TZTs4Oh.png)](http://i.imgur.com/0TZTs4O.png)
+![Imgur](http://i.imgur.com/mSjKHBm.png)
 
-[![Imgur](http://i.imgur.com/op8HxaCh.png)](http://i.imgur.com/op8HxaC.png)
+![Imgur](http://i.imgur.com/GvqQhHD.png)
 
-These tests show a 30-40% performance gain compared to stock Python shutil.copy:
-[![Imgur](http://i.imgur.com/V4dIgSyh.png)](http://i.imgur.com/V4dIgSy.png)
+These tests show a 30-40% performance gain compared to stock Python `shutil.copyfile`:
+![Imgur](http://i.imgur.com/1eMzwH0.png)
 
 
 ## Usage
