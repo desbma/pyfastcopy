@@ -9,7 +9,7 @@ pyfastcopy
 
 pyfastcopy is a simple Python module that monkey patches the `shutil.copyfile` function of Python standard library to internally use the sendfile system call.
 
-It can provide important performance improvements for large file copy (typically 30-40%). See [the performance section](#Performance) for some numbers.
+It can provide important performance improvements for large file copy (typically 30-40%). See [the performance section](#performance) for some numbers.
 
 Because `shutil.copyfile` is used by other fonctions in the `shutil` module, the following functions also automatically benefit from the performance boost:
 
@@ -33,7 +33,6 @@ See [benchmark.py](https://github.com/desbma/pyfastcopy/blob/master/benchmark.py
 [![Imgur](http://i.imgur.com/op8HxaCh.png)](http://i.imgur.com/op8HxaC.png)
 
 These tests show a 30-40% performance gain compared to stock Python shutil.copy:
-
 [![Imgur](http://i.imgur.com/V4dIgSyh.png)](http://i.imgur.com/V4dIgSy.png)
 
 
