@@ -32,7 +32,7 @@ See [benchmark.py](https://github.com/desbma/pyfastcopy/blob/master/benchmark.py
 
 ![Imgur](http://i.imgur.com/GvqQhHD.png)
 
-These tests show a 30-40% performance gain compared to stock Python `shutil.copyfile`:
+These tests show a 30-40% performance improvement of `shutil.copyfile` compared to stock Python:
 ![Imgur](http://i.imgur.com/1eMzwH0.png)
 
 
@@ -42,7 +42,7 @@ Just import the module:
 
     import pyfastcopy
 
-And then use the patched shutil.copyfile as usual:
+And then use the patched `shutil.copyfile` as usual:
 
     shutil.copyfile(src, dst)
 
