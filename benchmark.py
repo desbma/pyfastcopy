@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
     # plot
     for graph, data_filepath in enumerate(data_filepaths[:2], 1):
-      gnuplot_code = ["set terminal png size 1024,600 font 'M+ 1c bold,16'",
+      gnuplot_code = ["set terminal png size 1024,600 font 'M+ 1c bold,12'",
                       "set title \"Time to copy file using shutil.copyfile: standard Python vs pyfastcopy\\n"
                       "(using tmpfs, on %s %s %s)\"" % (platform.system(),
                                                         platform.release(),
@@ -90,13 +90,14 @@ if __name__ == "__main__":
                       "set style fill solid",
                       "set boxwidth 0.95 relative",
                       "set datafile separator ','",
-                      "plot '%s' using ($2*1000):xtic(1) title 'standard', '%s' using ($3*1000):xtic(1) title 'pyfastcopy'" % (data_filepath, data_filepath)]
+                      "plot '%s' using ($2*1000):xtic(1) title 'standard', "
+                      "'%s' using ($3*1000):xtic(1) title 'pyfastcopy'" % (data_filepath, data_filepath)]
       gnuplot_code = ";\n".join(gnuplot_code) + ";"
       subprocess.check_output(("gnuplot",),
                               input=gnuplot_code,
                               stderr=None,
                               universal_newlines=True)
-    gnuplot_code = ["set terminal png size 1024,600 font 'M+ 1c bold,16'",
+    gnuplot_code = ["set terminal png size 1024,600 font 'M+ 1c bold,12'",
                     "set title \"shutil.copyfile performance gain of: pyfastcopy vs stock Python\\n"
                     "(using tmpfs, on %s %s %s)\"" % (platform.system(),
                                                       platform.release(),
