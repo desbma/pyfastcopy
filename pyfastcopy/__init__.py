@@ -81,6 +81,6 @@ if not sys.platform.startswith("win32"):
           shutil.copyfileobj(fsrc, fdst)
     return dst
 
-
-  shutil._orig_copyfile = shutil.copyfile
-  shutil.copyfile = copyfile
+  if shutil.copyfile != copyfile:
+    shutil._orig_copyfile = shutil.copyfile
+    shutil.copyfile = copyfile
