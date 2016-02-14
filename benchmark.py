@@ -7,6 +7,7 @@ import contextlib
 import os
 import platform
 import subprocess
+import sys
 import tempfile
 import timeit
 
@@ -73,12 +74,14 @@ if __name__ == "__main__":
         files[-1].write(line)
 
     # plot
+    sysinfo_line = "(%s %s, on %s %s %s)\"" % (sys.implementation.name,
+                                               ".".join(map(str, sys.implementation.version[0:3])),
+                                               platform.system(),
+                                               platform.release(),
+                                               platform.processor())
     for graph, data_filepath in enumerate(data_filepaths[:2], 1):
       gnuplot_code = ["set terminal png size 1024,600 font 'M+ 1c bold,12'",
-                      "set title \"Time to copy file using shutil.copyfile: standard Python vs pyfastcopy\\n"
-                      "(using tmpfs, on %s %s %s)\"" % (platform.system(),
-                                                        platform.release(),
-                                                        platform.processor()),
+                      "set title \"Time to copy file using shutil.copyfile: standard Python vs pyfastcopy\\n" + sysinfo_line,
                       "set output '%u.png'" % (graph),
                       "set key left samplen 3 spacing 1.75",
                       "set xlabel 'File size (MB)'",
@@ -98,10 +101,7 @@ if __name__ == "__main__":
                               stderr=None,
                               universal_newlines=True)
     gnuplot_code = ["set terminal png size 1024,600 font 'M+ 1c bold,12'",
-                    "set title \"shutil.copyfile performance gain of pyfastcopy vs stock Python\\n"
-                    "(using tmpfs, on %s %s %s)\"" % (platform.system(),
-                                                      platform.release(),
-                                                      platform.processor()),
+                    "set title \"shutil.copyfile performance gain of pyfastcopy vs stock Python\\n" + sysinfo_line,
                     "set output '3.png'",
                     "set xlabel 'File size (MB)'",
                     "set xtics rotate out",
