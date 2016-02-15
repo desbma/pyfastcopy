@@ -30,10 +30,10 @@ See [benchmark.py](https://github.com/desbma/pyfastcopy/blob/master/benchmark.py
 
 ![graph1](https://i.imgur.com/fbKbKgm.png)
 
-![graph2](http://i.imgur.com/Cnrwi2Y.png)
+![graph2](https://i.imgur.com/Cnrwi2Y.png)
 
 These tests show a 30-40% performance improvement of `shutil.copyfile` compared to stock Python:
-![graph3](http://i.imgur.com/B3GDWFr.png)
+![graph3](https://i.imgur.com/B3GDWFr.png)
 
 
 ## Usage
