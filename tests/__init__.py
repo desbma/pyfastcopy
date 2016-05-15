@@ -59,7 +59,12 @@ class TestFastCopy(unittest.TestCase):
       shutil.copyfile(self.tmpfile1, self.tmpfile2)
       self.assertTrue(sendfile_mock.called)
 
+  @unittest.skipIf(os.getenv("CI") and os.getenv("TRAVIS"),
+                   "Test not reliable/deterministic on Travis virtualized environment")
   def test_isFaster(self):
+    # warm up os cache
+    for _ in range(2):
+      shutil._orig_copyfile(self.tmpfile1, self.tmpfile2)
     before = monotonic()
     for _ in range(10):
       shutil._orig_copyfile(self.tmpfile1, self.tmpfile2)
