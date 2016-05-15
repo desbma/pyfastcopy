@@ -60,13 +60,14 @@ class TestFastCopy(unittest.TestCase):
       self.assertTrue(sendfile_mock.called)
 
   def test_isFaster(self):
-    for _ in range(2):  # do it 2 times to warm up os cache
-      before = monotonic()
-      shutil._orig_copyfile(self.tmpfile1, self.tmpfile2)
-      after = monotonic()
-      t1 = after - before
     before = monotonic()
-    shutil.copyfile(self.tmpfile1, self.tmpfile2)
+    for _ in range(10):
+      shutil._orig_copyfile(self.tmpfile1, self.tmpfile2)
+    after = monotonic()
+    t1 = after - before
+    before = monotonic()
+    for _ in range(10):
+      shutil.copyfile(self.tmpfile1, self.tmpfile2)
     after = monotonic()
     t2 = after - before
     self.assertGreater(t1, t2)
