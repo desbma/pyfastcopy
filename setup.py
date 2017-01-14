@@ -31,7 +31,7 @@ except ImportError:
 setup(name="pyfastcopy",
       version=version,
       author="desbma",
-      packages=find_packages(),
+      packages=find_packages(exclude=("tests",)),
       test_suite="tests",
       install_requires=requirements,
       description="Speed up shutil.copyfile by using sendfile system call",
