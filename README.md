@@ -1,8 +1,8 @@
 pyfastcopy
 ==========
 
-[![Latest Version](https://img.shields.io/pypi/v/pyfastcopy.svg?style=flat)](https://pypi.python.org/pypi/pyfastcopy/)
-[![Tests Status](https://img.shields.io/travis/desbma/pyfastcopy/master.svg?label=tests&style=flat)](https://travis-ci.org/desbma/pyfastcopy)
+[![Latest version](https://img.shields.io/pypi/v/pyfastcopy.svg?style=flat)](https://pypi.python.org/pypi/pyfastcopy/)
+[![Tests status](https://img.shields.io/travis/desbma/pyfastcopy/master.svg?label=tests&style=flat)](https://travis-ci.org/desbma/pyfastcopy)
 [![Coverage](https://img.shields.io/coveralls/desbma/pyfastcopy/master.svg?style=flat)](https://coveralls.io/github/desbma/pyfastcopy?branch=master)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/pyfastcopy.svg?style=flat)](https://pypi.python.org/pypi/pyfastcopy/)
 [![License](https://img.shields.io/github/license/desbma/pyfastcopy.svg?style=flat)](https://pypi.python.org/pypi/pyfastcopy/)
