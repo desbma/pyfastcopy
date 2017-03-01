@@ -28,9 +28,9 @@ Tests were done copying files (source and destination) on a [tmpfs](https://en.w
 
 See [benchmark.py](https://github.com/desbma/pyfastcopy/blob/master/benchmark.py) for details about the test procedure and how the following graphs were generated.
 
-Python 3.4: [![graph1](https://i.imgur.com/fbKbKgmm.png)](https://i.imgur.com/fbKbKgm.png) [![graph2](https://i.imgur.com/Cnrwi2Ym.png)](https://i.imgur.com/Cnrwi2Y.png) [![graph3](https://i.imgur.com/B3GDWFrm.png)](https://i.imgur.com/B3GDWFr.png)
+Python 3.4: [![graph1](https://i.imgur.com/fbKbKgmt.png)](https://i.imgur.com/fbKbKgm.png) [![graph2](https://i.imgur.com/Cnrwi2Yt.png)](https://i.imgur.com/Cnrwi2Y.png) [![graph3](https://i.imgur.com/B3GDWFrt.png)](https://i.imgur.com/B3GDWFr.png)
 
-Python 3.6: [![graph1](https://i.imgur.com/5lnETSCm.png)](https://i.imgur.com/5lnETSC.png) [![graph2](https://i.imgur.com/YsBWYsxm.png)](https://i.imgur.com/YsBWYsx.png) [![graph3](https://i.imgur.com/k32LSbCm.png)](https://i.imgur.com/k32LSbC.png)
+Python 3.6: [![graph1](https://i.imgur.com/5lnETSCt.png)](https://i.imgur.com/5lnETSC.png) [![graph2](https://i.imgur.com/YsBWYsxt.png)](https://i.imgur.com/YsBWYsx.png) [![graph3](https://i.imgur.com/k32LSbCt.png)](https://i.imgur.com/k32LSbC.png)
 
 **These tests show a 30-50% performance improvement of `shutil.copyfile` compared to stock Python.**
 
