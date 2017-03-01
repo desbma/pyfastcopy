@@ -4,11 +4,16 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
+  - "3.5-dev"
   - "3.6"
-  - "nightly"
+  - "3.6-dev"
+  - "3.7-dev"
 matrix:
   allow_failures:
-    - python: "nightly"
+    - python: "3.5-dev"
+    - python: "3.6-dev"
+    - python: "3.7-dev"
+  fast_finish: true
 before_install:
   - "sudo apt-get -q update"
   - "pip install -U pip"
