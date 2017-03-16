@@ -4,6 +4,7 @@
 
 import collections
 import contextlib
+import errno
 import os
 import platform
 import subprocess
@@ -42,22 +43,30 @@ if __name__ == "__main__":
     data = collections.OrderedDict()
     for file_size_mb in FILE_SIZES_MB:
       data_point = []
-      filepath_src = generate_file(tmp_dir, file_size_mb)
-      read_file(filepath_src)  # warm up filesystem cache
-      filepath_dst = "%s.dst" % (filepath_src)
-      for use_fast_copy in (False, True):
-        print("Measuring with%s pyfastcopy..." % ("" if use_fast_copy else "out"))
-        v = timeit.repeat(setup="import shutil; import pyfastcopy; p1 = %s; p2 = %s" % (repr(filepath_src),
-                                                                                        repr(filepath_dst)),
-                          stmt="shutil.%s(p1, p2)" % ("copyfile" if use_fast_copy else "_orig_copyfile"),
-                          number=10 if file_size_mb >= 64 else 100,
-                          repeat=5)
-        v = min(v)
-        data_point.append(str(v / (10 if file_size_mb >= 64 else 100)))
-        os.remove(filepath_dst)
-      os.remove(filepath_src)
-      data[file_size_mb] = tuple(data_point)
+      try:
+        filepath_src = generate_file(tmp_dir, file_size_mb)
+        read_file(filepath_src)  # warm up filesystem cache
+        filepath_dst = "%s.dst" % (filepath_src)
+        for use_fast_copy in (False, True):
+          print("Measuring with%s pyfastcopy..." % ("" if use_fast_copy else "out"))
+          v = timeit.repeat(setup="import shutil; import pyfastcopy; p1 = %s; p2 = %s" % (repr(filepath_src),
+                                                                                          repr(filepath_dst)),
+                            stmt="shutil.%s(p1, p2)" % ("copyfile" if use_fast_copy else "_orig_copyfile"),
+                            number=10 if file_size_mb >= 64 else 100,
+                            repeat=5)
+          v = min(v)
+          data_point.append(str(v / (10 if file_size_mb >= 64 else 100)))
+          os.remove(filepath_dst)
+        os.remove(filepath_src)
+        data[file_size_mb] = tuple(data_point)
+      except OSError as e:
+        if e.errno == errno.ENOSPC:
+          print("Not enough free space")
+          break
+        else:
+          raise
 
+  with tempfile.TemporaryDirectory() as tmp_dir:
     # write data files
     data_filepaths = []
     data_fds = []
