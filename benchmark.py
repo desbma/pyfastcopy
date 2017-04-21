@@ -83,7 +83,7 @@ if __name__ == "__main__":
         files[-1].write(line)
 
     # plot
-    sysinfo_line = "(%s %s, on %s %s %s)\"" % (sys.implementation.name,
+    sysinfo_line = "(%s %s, on %s %s %s)\"" % (sys.implementation.name.capitalize(),
                                                ".".join(map(str, sys.implementation.version[0:3])),
                                                platform.system(),
                                                platform.release(),
