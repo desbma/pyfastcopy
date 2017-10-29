@@ -51,7 +51,7 @@ And then use the patched `shutil.copyfile` as usual:
 
 ### From PyPI (with PIP)
 
-1. If you don't already have it, [install pip](http://www.pip-installer.org/en/latest/installing.html) for Python 3 (not needed if you are using Python >= 3.4)
+1. If you don't already have it, [install pip](https://pip.pypa.io/en/stable/installing/) for Python 3 (not needed if you are using Python >= 3.4)
 2. Install pyfastcopy: `pip3 install pyfastcopy`
 3. Enjoy fast copy when using `shutil.copyfile`, `shutil.copy`, `shutil.copy2` or `shutil.copytree`
 
