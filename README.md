@@ -5,7 +5,6 @@ pyfastcopy
 [![Tests status](https://img.shields.io/travis/desbma/pyfastcopy/master.svg?label=tests&style=flat)](https://travis-ci.org/desbma/pyfastcopy)
 [![Coverage](https://img.shields.io/coveralls/desbma/pyfastcopy/master.svg?style=flat)](https://coveralls.io/github/desbma/pyfastcopy?branch=master)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/pyfastcopy.svg?style=flat)](https://pypi.python.org/pypi/pyfastcopy/)
-[![License](https://img.shields.io/github/license/desbma/pyfastcopy.svg?style=flat)](https://pypi.python.org/pypi/pyfastcopy/)
 
 pyfastcopy is a simple Python module that monkey patches the `shutil.copyfile` function of Python standard library to internally use the sendfile system call.
 
