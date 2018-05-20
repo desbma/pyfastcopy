@@ -21,7 +21,7 @@ if not sys.platform.startswith("win32"):
 
   # errnos sendfile can set if not supported on the system
   _sendfile_err_codes = {code for code, name in errno.errorcode.items() \
-                         if name in ("EINVAL", "ENOSYS", "ENOTSUP",
+                         if name in ("EIO", "EINVAL", "ENOSYS", "ENOTSUP",
                                      "EBADF", "ENOTSOCK", "EOPNOTSUPP")}
 
 
