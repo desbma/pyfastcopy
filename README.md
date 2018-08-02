@@ -6,6 +6,8 @@ pyfastcopy
 [![Coverage](https://img.shields.io/coveralls/desbma/pyfastcopy/master.svg?style=flat)](https://coveralls.io/github/desbma/pyfastcopy?branch=master)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/pyfastcopy.svg?style=flat)](https://pypi.python.org/pypi/pyfastcopy/)
 
+[ **This project is no longer maintained, as Python 3.8 will include similar [copy speedup builtin](https://bugs.python.org/issue33671).** ]
+
 pyfastcopy is a simple Python module that monkey patches the `shutil.copyfile` function of Python standard library to internally use the sendfile system call.
 
 It can provide important performance improvements for large file copy (typically 30-40%). See [the performance section](#performance) for some numbers.
